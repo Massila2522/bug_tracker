@@ -85,12 +85,12 @@
                                 <i class="fa-solid fa-ellipsis-vertical cursor-pointer"></i>
                             </button>
                             <div class="z-40 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600" id="dropdown-project-{{ $project->id }}">
-                                <ul class="py-1" role="none">
+                                <ul role="none">
                                     <li>
-                                        <a class="cursor-pointer block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem" data-modal-toggle="editProjectModal{{ $project->id }}">Edit</a>
+                                        <a class="cursor-pointer block px-4 py-1 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem" data-modal-toggle="editProjectModal{{ $project->id }}">Edit</a>
                                     </li>
                                     <li>
-                                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem" data-modal-target="deleteProjectModal{{ $project->id }}" data-modal-toggle="deleteProjectModal{{ $project->id }}">Delete</a>
+                                        <a href="#" class="block px-4 py-1 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem" data-modal-target="deleteProjectModal{{ $project->id }}" data-modal-toggle="deleteProjectModal{{ $project->id }}">Delete</a>
                                     </li>
                                 </ul>
                             </div>

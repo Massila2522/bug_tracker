@@ -36,7 +36,7 @@ class Ticket extends Model
         return $this->hasMany(Comment::class);
     }
 
-    public function projectAuthor(): BelongsTo
+    public function ticketAuthor(): BelongsTo
     {
         return $this->belongsTo(User::class, 'author');
     }
