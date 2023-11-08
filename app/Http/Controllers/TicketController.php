@@ -23,23 +23,20 @@ class TicketController extends Controller
         $ticket->update($request->validated());
         $ticket->devs()->sync($request->devs);
 
-        return back()->with('success','Project updated successfully!');
+        return back()->with('success','Ticket updated successfully!');
     }
 
     public function destroy(Ticket $ticket)
     {
         $ticket->delete();
 
-        return back()->with('success','Project Deleted successfully!');
+        return back()->with('success','Ticket Deleted successfully!');
     }
 
     public function show(Ticket $ticket)
     {
-        $comments = Comment::where('ticket_id', '$ticket->id')->get();
-
         return view('ticket.show_ticket', [
-            'ticket' => $ticket,
-            'comments' => $comments
+            'ticket' => $ticket
         ]);
     }
 }

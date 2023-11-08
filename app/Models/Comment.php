@@ -25,6 +25,6 @@ class Comment extends Model
 
     public function commentAuthor(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'author');
     }
 }

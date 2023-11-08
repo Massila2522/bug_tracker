@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AllTicketsController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProjectController;
@@ -30,6 +32,13 @@ Route::middleware('auth')->group(function () {
     Route::post('/ticket/{ticket}/edit', [TicketController::class, 'update'])->name('ticket.edit');
     Route::delete('/ticket/{ticket}/destroy', [TicketController::class, 'destroy'])->name('ticket.destroy');
     Route::get('/ticket/{ticket}/show', [TicketController::class, 'show'])->name('ticket.show');
+
+    Route::post('/comment/add', [CommentController::class, 'save'])->name('comment.save');
+    Route::post('/comment/{comment}/edit', [CommentController::class, 'update'])->name('comment.edit');
+    Route::delete('/comment/{comment}/destroy', [CommentController::class, 'destroy'])->name('comment.destroy');
+
+    Route::get('/tickets', [AllTicketsController::class, 'index'])->name('tickets');
+
 });
 
 require __DIR__.'/auth.php';
