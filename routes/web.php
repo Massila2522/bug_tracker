@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AllTicketsController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ProfileController;
@@ -39,14 +40,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/tickets', [AllTicketsController::class, 'index'])->name('tickets');
 
+    Route::get('/administration', [AdminController::class, 'index'])->name('administration');
 });
 
 require __DIR__.'/auth.php';
-
-
-// function () {
-//     return view('dashboard', [
-//         'projects' => Project::all(),
-//         'tickets' => Ticket::all()  //only tickets of the logged in user
-//     ]);
-// }

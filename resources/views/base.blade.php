@@ -110,12 +110,14 @@
                <span class="flex-1 ml-3 whitespace-nowrap">Tickets</span>
             </a>
          </li>
+         @if(Auth::user()->admin)
          <li>
-            <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+            <a href="{{ route('administration') }}" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                <i class="flex-shrink-0 w-5 h-5 text-xl text-emerald-500 transition duration-75 dark:text-gray-400 dark:group-hover:text-white fa-solid fa-key"></i>
                <span class="flex-1 ml-3 whitespace-nowrap">Administration</span>
             </a>
          </li>
+         @endif
       </ul>
 
       <hr class="w-48 h-1 mx-auto my-4 bg-gray-100 border-0 rounded md:my-10 dark:bg-gray-700">
