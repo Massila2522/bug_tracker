@@ -23,7 +23,7 @@
             <x-input-error :messages="$errors->get('phone')" class="mt-2" />
         </div>
 
-        <x-text-input hidden id="admin" type="checkbox" name="admin" :value="old('admin')" required />
+        <input hidden id="admin" name="admin" value="old('admin')">
 
         <!-- Password -->
         <div class="mt-4">

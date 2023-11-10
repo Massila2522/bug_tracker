@@ -16,11 +16,7 @@ class ProjectController extends Controller
         $project = Project::create($validated);
         $project->members()->attach($request->members);
 
-        //if($project){
-            return redirect()->route('dashboard')->with('success','Project Added');
-        //} else {
-          //  return back()->with('error', 'Project has not been added');
-        //}
+        return redirect()->route('dashboard')->with('success','Project Added');
     }
 
     public function update(ProjectRequest $request, Project $project)
@@ -40,7 +36,7 @@ class ProjectController extends Controller
 
     public function show(Project $project)
     {
-        $tickets = Ticket::where('project_id', '$project->id')->get();
+        $tickets = Ticket::where('project_id', '$project->id')->paginate(1);
         $users = User::all();
 
         return view('project.show_project', [

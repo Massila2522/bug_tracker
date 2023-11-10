@@ -20,6 +20,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::patch('/profile/{user}', [ProfileController::class, 'adminUpdate'])->name('profile.adminUpdate');
+    Route::delete('/profile/{user}', [ProfileController::class, 'adminDestroy'])->name('profile.adminDestroy');
 
     Route::post('/project/add', [ProjectController::class, 'save'])->name('project.save');
     Route::post('/project/{project}/edit', [ProjectController::class, 'update'])->name('project.edit');

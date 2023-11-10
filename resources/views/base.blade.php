@@ -162,7 +162,7 @@
   <!-- Flowbite js -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script>
   <!-- Apex charts -->
-  <!-- <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 
   @yield('scripts')
 </body>

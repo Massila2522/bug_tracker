@@ -6,12 +6,12 @@
 
 <div class="w-full flex items-center justify-between flex-wrap mt-2 mb-10">
     <div>
-        <p class="text-l font-bold text-gray-500">
+        <p class="text-xl font-bold text-gray-900">
             {{ $project->name }}
         </p>
     </div>
     <div>
-        <p class="text-l font-semibold text-gray-500">
+        <p class="text-lg font-semibold text-gray-900">
             {{ $project->description }}
         </p>
     </div>
@@ -21,7 +21,7 @@
 <div id="accordion-color" data-accordion="collapse" data-active-classes="bg-blue-100 dark:bg-gray-800 text-blue-600 dark:text-white">
 
   <h2 id="accordion-color-heading-1">
-    <button type="button" class="flex items-center justify-between w-full p-5 font-medium text-left text-gray-500 border border-b-0 border-gray-200 rounded-t-xl focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-800 dark:border-gray-700 dark:text-gray-400 hover:bg-blue-100 dark:hover:bg-gray-800" data-accordion-target="#accordion-color-body-1" aria-expanded="true" aria-controls="accordion-color-body-1">
+    <button type="button" class="flex items-center justify-between w-full p-5 font-medium text-left text-gray-900 border border-b-0 border-gray-500 rounded-t-xl focus:ring-4 focus:ring-blue-200 focus:border-gray-200 dark:focus:ring-blue-800 dark:border-gray-700 dark:text-gray-400 hover:bg-blue-100 hover:border-gray-200 dark:hover:bg-gray-800" data-accordion-target="#accordion-color-body-1" aria-expanded="false" aria-controls="accordion-color-body-1">
       <span>Team</span>
       <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
@@ -87,7 +87,7 @@
   </div>
 
   <h2 id="accordion-color-heading-2">
-    <button type="button" class="flex items-center justify-between w-full p-5 font-medium text-left text-gray-500 border border-gray-200 focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-800 dark:border-gray-700 dark:text-gray-400 hover:bg-blue-100 dark:hover:bg-gray-800" data-accordion-target="#accordion-color-body-2" aria-expanded="false" aria-controls="accordion-color-body-2">
+    <button type="button" class="flex items-center justify-between w-full p-5 font-medium text-left text-gray-900 border border-gray-500 focus:border-gray-200 focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-800 dark:border-gray-700 dark:text-gray-400 hover:bg-blue-100 hover:border-gray-200 dark:hover:bg-gray-800" data-accordion-target="#accordion-color-body-2" aria-expanded="false" aria-controls="accordion-color-body-2">
       <span>Tickets</span>
       <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
@@ -150,6 +150,9 @@
             </table>
         </div>
 
+        <!-- pagination -->
+        {{ $tickets->links() }}
+
         <button type="button" class="mt-5 text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm py-2 px-4 mr-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700" data-modal-toggle="createTicketModal" type="button">Add Ticket</button>
 
         @include('ticket.add_ticket')
@@ -157,5 +160,4 @@
     </div>
   </div>
 </div>
-
 @endsection
