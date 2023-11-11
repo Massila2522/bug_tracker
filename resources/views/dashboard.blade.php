@@ -3,6 +3,8 @@
 @section('title', 'Dashboard')
 
 @section('content')
+<div class="mb-4">
+</div>
 
     <div class="w-full flex items-center justify-between pb-4 overflow-x-auto flex-wrap">
 
@@ -110,8 +112,10 @@
     {{ $projects->links() }}
 
 
+<div class="mt-20 mb-4 w-full flex justify-between items-center flex-wrap">
 <!-- tickets type -->
-<div class="my-20 max-w-sm w-full bg-white rounded-lg shadow dark:bg-gray-800 p-4 md:p-6">
+<div>
+<div class="my-4 max-w-xs w-xs bg-white rounded-lg shadow dark:bg-gray-800 p-4 md:p-6">
 
 <div class="flex justify-between items-start w-full">
     <div class="flex-col items-center">
@@ -128,9 +132,11 @@
 
 <div class="py-6" id="pie-chart-type"></div>
 </div>
+</div>
 
 <!-- tickets priority -->
-<div class="my-20 max-w-sm w-full bg-white rounded-lg shadow dark:bg-gray-800 p-4 md:p-6">
+<div>
+<div class="my-4 max-w-xs w-xs bg-white rounded-lg shadow dark:bg-gray-800 p-4 md:p-6">
 
 <div class="flex justify-between items-start w-full">
     <div class="flex-col items-center">
@@ -147,6 +153,31 @@
 
 <div class="py-6" id="pie-chart-priority"></div>
 </div>
+</div>
+
+<!-- tickets status -->
+<div>
+<div class="my-4 max-w-xs w-xs bg-white rounded-lg shadow dark:bg-gray-800 p-4 md:p-6">
+
+<div class="flex justify-between items-start w-full">
+    <div class="flex-col items-center">
+      <div class="flex items-center mb-1">
+          <h5 class="text-xl font-bold leading-none text-gray-900 dark:text-white me-1">Tickets by Status</h5>
+          <div data-popover id="chart-info" role="tooltip" class="absolute z-10 invisible inline-block text-sm text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 w-72 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-400">
+              <div class="p-3 space-y-2">
+          </div>
+          <div data-popper-arrow></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="py-6" id="pie-chart-status"></div>
+</div>
+</div>
+</div>
+
+
 
 <script>
 // ApexCharts options and config
@@ -156,7 +187,7 @@ window.addEventListener("load", function() {
         series: [{{$issueTickets}}, {{$bugTickets}}, {{$featureTickets}}],
         colors: ["#1C64F2", "#16BDCA", "#9061F9"],
         chart: {
-          height: 420,
+          height: 320,
           width: "100%",
           type: "pie",
         },
@@ -213,14 +244,15 @@ window.addEventListener("load", function() {
       const chartType = new ApexCharts(document.getElementById("pie-chart-type"), getChartOptionsType());
       chartType.render();
     }
+});
 
-
+window.addEventListener("load", function() {
     const getChartOptionsPriority = () => {
       return {
         series: [{{$immediateTickets}}, {{$highTickets}}, {{$lowTickets}}, {{$mediumTickets}}],
         colors: ["#1C64F2", "#16BDCA", "#9061F9", "#CCCCCC"],
         chart: {
-          height: 420,
+          height: 320,
           width: "100%",
           type: "pie",
         },
@@ -274,11 +306,77 @@ window.addEventListener("load", function() {
     }
 
     if (document.getElementById("pie-chart-priority") && typeof ApexCharts !== 'undefined') {
-      const chartPriority = new ApexCharts(document.getElementById("pie-chart-priority"), getChartOptionsPiority());
+      const chartPriority = new ApexCharts(document.getElementById("pie-chart-priority"), getChartOptionsPriority());
       chartPriority.render();
     }
-
 });
+
+
+window.addEventListener("load", function() {
+    const getChartOptionsStatus = () => {
+      return {
+        series: [{{$resolvedTickets}}, {{$newTickets}}, {{$inProgressTickets}}],
+        colors: ["#1C64F2", "#16BDCA", "#9061F9"],
+        chart: {
+          height: 320,
+          width: "100%",
+          type: "pie",
+        },
+        stroke: {
+          colors: ["white"],
+          lineCap: "",
+        },
+        plotOptions: {
+          pie: {
+            labels: {
+              show: true,
+            },
+            size: "100%",
+            dataLabels: {
+              offset: -25
+            }
+          },
+        },
+        labels: ["Resolved", "New", "In Progress"],
+        dataLabels: {
+          enabled: true,
+          style: {
+            fontFamily: "Inter, sans-serif",
+          },
+        },
+        legend: {
+          position: "bottom",
+          fontFamily: "Inter, sans-serif",
+        },
+        yaxis: {
+          labels: {
+            formatter: function (value) {
+              return value + "%"
+            },
+          },
+        },
+        xaxis: {
+          labels: {
+            formatter: function (value) {
+              return value  + "%"
+            },
+          },
+          axisTicks: {
+            show: false,
+          },
+          axisBorder: {
+            show: false,
+          },
+        },
+      }
+    }
+
+    if (document.getElementById("pie-chart-status") && typeof ApexCharts !== 'undefined') {
+      const chartStatus = new ApexCharts(document.getElementById("pie-chart-status"), getChartOptionsStatus());
+      chartStatus.render();
+    }
+});
+
 </script>
 
 

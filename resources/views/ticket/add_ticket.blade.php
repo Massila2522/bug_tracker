@@ -36,7 +36,7 @@
                         <label for="status" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status</label>
                         <select id="status" name="status" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                             <option value="value1">Resolved</option>
-                            <option value="value2">now</option>
+                            <option value="value2">New</option>
                             <option value="value3">In Progress</option>
                         </select>
                         @error("status")

@@ -49,7 +49,7 @@
                             @break
 
                             @case("value2")
-                                Now
+                                New
                             @break
 
                             @case("value3")

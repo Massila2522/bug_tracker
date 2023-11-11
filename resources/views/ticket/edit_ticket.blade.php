@@ -40,7 +40,7 @@
                         <label for="status-edit" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status</label>
                         <select id="status-edit" name="status" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                             <option @selected($ticket->status == "value1") value="value1">Resolved</option>
-                            <option @selected($ticket->status == "value2") value="value2">Now</option>
+                            <option @selected($ticket->status == "value2") value="value2">New</option>
                             <option @selected($ticket->status == "value3") value="value3">In Progress</option>
                         </select>
                         @error("status")
@@ -92,8 +92,7 @@
                     <input type="hidden" name="project_id" value="{{ $project->id }}">
                 </div>
                 <button type="submit" class="text-white inline-flex items-center bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
-                    <svg class="mr-1 -ml-1 w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"></path></svg>
-                    Add new ticket
+                    Edit Ticket
                 </button>
             </form>
         </div>

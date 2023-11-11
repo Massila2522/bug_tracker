@@ -27,6 +27,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/project/{project}/edit', [ProjectController::class, 'update'])->name('project.edit');
     Route::delete('/project/{project}/destroy', [ProjectController::class, 'destroy'])->name('project.destroy');
     Route::get('/project/{project}/show', [ProjectController::class, 'show'])->name('project.show');
+    Route::post('/project/{project}/add_member', [ProjectController::class, 'addMember'])->name('project.addMember');
+    Route::delete('/project/{project}/removeMember/{member}', [ProjectController::class, 'removeMember'])->name('project.removeMember');
 
     Route::get('/search', [DashboardController::class, 'searchProjects']);
     // ->name('dashboard.searchProjects');

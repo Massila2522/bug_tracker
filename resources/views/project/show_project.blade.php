@@ -62,26 +62,27 @@
                                 {{ $member->phone }}
                             </td>
                             <td class="px-6 py-4">
-                                <button aria-expanded="false" data-dropdown-toggle="dropdown-project-{{ $project->id }}">
+                                <button aria-expanded="false" data-dropdown-toggle="dropdown-member-{{ $member->id }}">
                                     <i class="fa-solid fa-ellipsis-vertical cursor-pointer"></i>
                                 </button>
-                                <div class="z-40 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600" id="dropdown-project-{{ $project->id }}">
+                                <div class="z-40 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600" id="dropdown-member-{{ $member->id }}">
                                     <ul class="py-1" role="none">
                                         <li>
-                                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem" data-modal-target="" data-modal-toggle="">Remove</a>
+                                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem" data-modal-target="removeMemberModal{{ $member->id }}" data-modal-toggle="removeMemberModal{{ $member->id }}">Remove</a>
                                         </li>
                                     </ul>
                                 </div>
                             </td>
                         </tr>
+                        @include('project.remove_member')
                     @endforeach
                 </tbody>
             </table>
         </div>
 
-        <button type="button" class="mt-5 text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm py-2 px-4 mr-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700" data-modal-toggle="createTicketModal" type="button">Add Member</button>
+        <button type="button" class="mt-5 text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm py-2 px-4 mr-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700" data-modal-toggle="add-member-modal" type="button">Add Member</button>
 
-        @include('project.add_project')
+        @include('project.add_member')
 
     </div>
   </div>
@@ -114,7 +115,10 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($project->tickets as $ticket)
+                    @php
+                    $ticketsPaginated = $project->tickets()->paginate(4);
+                    @endphp
+                    @foreach($ticketsPaginated as $ticket)
                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white">
                             <a href="{{ route('ticket.show', $ticket) }}">
@@ -149,9 +153,8 @@
                 </tbody>
             </table>
         </div>
-
         <!-- pagination -->
-        {{ $tickets->links() }}
+        {{ $ticketsPaginated->links() }}
 
         <button type="button" class="mt-5 text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm py-2 px-4 mr-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700" data-modal-toggle="createTicketModal" type="button">Add Ticket</button>
 

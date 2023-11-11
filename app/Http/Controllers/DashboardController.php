@@ -49,6 +49,19 @@ class DashboardController extends Controller
             $query->where('user_id', $userId);
         })->where('priority', 'value4')->count()) / $allUserTickets) * 100;
 
+
+        $resolvedTickets = ((Ticket::whereHas('devs', function ($query) use ($userId) {
+            $query->where('user_id', $userId);
+        })->where('status', 'value1')->count()) / $allUserTickets) * 100;
+
+        $newTickets = ((Ticket::whereHas('devs', function ($query) use ($userId) {
+            $query->where('user_id', $userId);
+        })->where('status', 'value2')->count()) / $allUserTickets) * 100;
+
+        $inProgressTickets = ((Ticket::whereHas('devs', function ($query) use ($userId) {
+            $query->where('user_id', $userId);
+        })->where('status', 'value3')->count()) / $allUserTickets) * 100;
+
         $users = User::all();
 
         return view('dashboard', [
@@ -60,6 +73,9 @@ class DashboardController extends Controller
             'highTickets' => $highTickets,
             'lowTickets' => $lowTickets,
             'mediumTickets' => $mediumTickets,
+            'resolvedTickets' => $resolvedTickets,
+            'newTickets' => $newTickets,
+            'inProgressTickets' => $inProgressTickets,
             'users' => $users
         ]);
     }
