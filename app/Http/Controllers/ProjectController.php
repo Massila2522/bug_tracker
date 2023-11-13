@@ -7,7 +7,6 @@ use App\Models\Project;
 use App\Models\Ticket;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\MessageBag;
 
 class ProjectController extends Controller
 {
@@ -17,7 +16,7 @@ class ProjectController extends Controller
         $project = Project::create($validated);
         $project->members()->attach($request->members);
 
-        return redirect()->route('dashboard')->with('success','Project Added');
+        return back()->with('success','Project Added');
     }
 
     public function update(ProjectRequest $request, Project $project)
@@ -25,18 +24,14 @@ class ProjectController extends Controller
         $project->update($request->validated());
         $project->members()->sync($request->members);
 
-        if ($project->errors) {
-            session()->flash('showEditProjectModal', true);
-        }
-
-        return redirect()->route('dashboard')->with('success','Project updated');
+        return back()->with('success','Project updated');
     }
 
     public function destroy(Project $project)
     {
         $project->delete();
 
-        return redirect()->route('dashboard')->with('success','Project Deleted');
+        return back()->with('success','Project Deleted');
     }
 
     public function show(Project $project)

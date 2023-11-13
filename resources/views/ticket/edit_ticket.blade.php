@@ -26,14 +26,18 @@
                         <label for="title-edit" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Ticket Title</label>
                         <input type="text" name="title" id="title-edit" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block p-2.5 w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Type ticket title" required="" value="{{ old('title', $ticket->title) }}">
                         @error("title")
-                            {{ $message }}
+                            <div class="text-red-500">
+                                {{ $message }}
+                            </div>
                         @enderror
                     </div>
                     <div class="col-span-4">
                         <label for="ticket-description-edit" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
                         <textarea id="ticket-description-edit" name="description" rows="2" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Type ticket description">{{ old('description', $ticket->description) }}</textarea>
                         @error("description")
-                            {{ $message }}
+                            <div class="text-red-500">
+                                {{ $message }}
+                            </div>
                         @enderror
                     </div>
                     <div class="col-span-2">
@@ -44,7 +48,9 @@
                             <option @selected($ticket->status == "value3") value="value3">In Progress</option>
                         </select>
                         @error("status")
-                            {{ $message }}
+                            <div class="text-red-500">
+                                {{ $message }}
+                            </div>
                         @enderror
                     </div>
                     <div class="col-span-2">
@@ -56,7 +62,9 @@
                             <option @selected($ticket->priority == "value4") value="value3">Medium</option>
                         </select>
                         @error("priority")
-                            {{ $message }}
+                            <div class="text-red-500">
+                                {{ $message }}
+                            </div>
                         @enderror
                     </div>
                     <div class="col-span-2">
@@ -67,14 +75,18 @@
                             <option @selected($ticket->type == "value3") value="value3">Feature Request</option>
                         </select>
                         @error("type")
-                            {{ $message }}
+                            <div class="text-red-500">
+                                {{ $message }}
+                            </div>
                         @enderror
                     </div>
                     <div class="col-span-2">
                         <label for="time_estimated-edit" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Time Estimated</label>
                         <input type="number" name="time_estimated" id="time_estimated-edit" rows="4" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" required="" value="{{ old('time_estimated', $ticket->time_estimated) }}" placeholder="Type number of weeks">
                         @error("time_estimated")
-                            {{ $message }}
+                            <div class="text-red-500">
+                                {{ $message }}
+                            </div>
                         @enderror
                     </div>
                     <div class="col-span-4">
@@ -85,7 +97,9 @@
                             @endforeach
                         </select>
                         @error("devs")
-                            {{ $message }}
+                            <div class="text-red-500">
+                                {{ $message }}
+                            </div>
                         @enderror
                     </div>
                     <input type="hidden" name="author" value="{{ Auth::id() }}">

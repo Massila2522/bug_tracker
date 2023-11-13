@@ -11,7 +11,6 @@
         <!-- projects search -->
         <div>
             <form action="{{ url('/search') }}" type="get">
-            <!-- route('dashboard.searchProjects') -->
                 @csrf
                 <label for="search-projects" class="sr-only">Search</label>
                 <div class="flex items-center">

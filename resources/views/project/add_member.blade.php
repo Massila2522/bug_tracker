@@ -22,7 +22,9 @@
                             @endforeach
                         </select>
                         @error("users")
-                            {{ $message }}
+                            <div class="text-red-500">
+                                {{ $message }}
+                            </div>
                         @enderror
                     </div>
                     <div class="flex items-center justify-between px-3 py-2 border-t dark:border-gray-600">

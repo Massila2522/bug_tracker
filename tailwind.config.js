@@ -75,3 +75,8 @@ tailwind.config = {
       }
     }
   }
+
+  module.exports = {
+    darkMode: 'class',
+    // ...
+  }

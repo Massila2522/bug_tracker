@@ -18,6 +18,11 @@
                     <div class="px-4 py-2 bg-white rounded-t-lg dark:bg-gray-800">
                         <label for="content" class="sr-only">Your comment</label>
                         <textarea id="content" name="content" rows="4" class="w-full px-0 text-sm text-gray-900 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400" placeholder="Write a comment...">{{ old('content', $comment->content) }}</textarea>
+                        @error("content")
+                            <div class="text-red-500">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
                     <input type="hidden" name="author" value="{{ Auth::id() }}">
                     <input type="hidden" name="ticket_id" value="{{ $ticket->id }}">

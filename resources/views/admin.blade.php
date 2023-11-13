@@ -11,9 +11,9 @@
 </div>
 
 @foreach($users as $user)
-<div id="accordion-flush" data-accordion="collapse" data-active-classes="px-2 bg-white dark:bg-gray-900 text-gray-900 dark:text-white" data-inactive-classes="text-gray-600 dark:text-gray-400">
+<div id="accordion-flush" data-accordion="collapse" data-active-classes="px-2 bg-white dark:bg-gray-800 text-gray-900 dark:text-white" data-inactive-classes="text-gray-600 dark:text-gray-400">
   <h2 id="accordion-flush-heading-{{ $user->id }}">
-    <button type="button" class="flex items-center justify-between w-full py-5 font-medium text-left text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400" data-accordion-target="#accordion-flush-body-{{ $user->id }}" aria-expanded="false" aria-controls="accordion-flush-body-{{ $user->id }}">
+    <button type="button" class="flex items-center justify-between w-full py-5 font-medium text-left text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-900" data-accordion-target="#accordion-flush-body-{{ $user->id }}" aria-expanded="false" aria-controls="accordion-flush-body-{{ $user->id }}">
       <span>{{ $user->name }}</span>
       <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
@@ -30,14 +30,29 @@
               <div class="w-full">
                   <label for="name-admin" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
                   <input type="text" name="name" id="name-admin" class="bg-white border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" value="{{ old('name', $user->name) }}">
+                @error("name")
+                    <div class="text-red-500">
+                        {{ $message }}
+                    </div>
+                @enderror
               </div>
               <div class="w-full">
                   <label for="email-admin" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
                   <input type="email" name="email" id="email-admin" class="bg-white border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" value="{{ old('email', $user->email) }}">
+                @error("email")
+                    <div class="text-red-500">
+                        {{ $message }}
+                    </div>
+                @enderror
               </div>
               <div>
                   <label for="phone-admin" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phone Number</label>
                   <input type="string" name="phone" id="phone-admin" class="bg-white border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" value="{{ old('phone', $user->phone) }}">
+                @error("phone")
+                    <div class="text-red-500">
+                        {{ $message }}
+                    </div>
+                @enderror
               </div>
               <div>
                   <label for="admin-admin" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status</label>
@@ -45,6 +60,11 @@
                       <option @selected(old('admin' == 0, $user->admin == 0)) value=0>User</option>
                       <option @selected(old('admin' == 1, $user->admin == 1)) value=1>Admin</option>
                   </select>
+                @error("admin")
+                    <div class="text-red-500">
+                        {{ $message }}
+                    </div>
+                @enderror
               </div>
           </div>
           <div class="flex items-center space-x-4">

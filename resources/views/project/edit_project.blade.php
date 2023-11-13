@@ -2,7 +2,7 @@
     $membersIds = $project->members()->pluck('id');
 @endphp
 
-<div id="editProjectModal{{ $project->id }}" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-modal md:h-full">
+<div id="editProjectModal{{ $project->id }}" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-modal md:h-full">
     <div class="relative p-4 w-full max-w-lg h-full md:h-auto">
         <!-- Modal content -->
         <div class="relative p-4 bg-white rounded-lg shadow dark:bg-gray-800 sm:p-5">
@@ -58,18 +58,6 @@
                 <button type="submit" class="text-white inline-flex items-center bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
                     Edit project
                 </button>
-
-                @if (session('showEditProjectModal'))
-                    <script>
-                        document.addEventListener('DOMContentLoaded', function() {
-                            var modalId = "editProjectModal{{ $project->id }}";
-                            var modal = document.getElementById(modalId);
-                            if (modal) {
-                                modal.classList.remove('hidden');
-                            }
-                        });
-                    </script>
-                @endif
 
             </form>
         </div>
