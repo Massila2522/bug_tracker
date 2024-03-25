@@ -2,6 +2,8 @@
 
 Bug Tracker is a web application built with Laravel, Tailwind CSS, and Docker to help developers manage their projects, streamline issue tracking, and enhance collaboration.
 
+https://youtu.be/1EEgPZsKkcc
+
 ## Features
 
 - **Authentication:**
